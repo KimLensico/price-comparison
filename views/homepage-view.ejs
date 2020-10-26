@@ -8,7 +8,9 @@
   <%- include('./layout/head') %>
 </head>
 <body>
-  <header></header>
+  <header>
+    <%- include('./layout/header') %>
+  </header>
   <main>
     <% gamesArray.forEach(games => { %>
         <h2><%= games.title %></h2>
