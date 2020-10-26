@@ -20,10 +20,14 @@ The vision of this product is to allow users to be able to find the best deals o
 This application solves the problem of users being able to find the best deals on video game titles they are interested in
 This product should be cared about because it is intended to save you money as a potential user
 
+## Scope
+
 This product will display a list of popular titles on the homepage
 This product will allow you to select from the list of popular titles to find the best deals on that title
 This product will display your selection on a second page along with the deals associated with the selected title
 This product will display your selections Steam rating and deal rating(s)
+
+## MVP Goals
 
 The MVP for our application is to display a list of popular titles and a search bar on our homepage
 to save user selections into a database
@@ -31,11 +35,24 @@ to retrieve database data and display relevent results on a second page
 to help users find the best deal!
 Stretch goals: being able to look up multiple games at a time and display their results concurrently
 
+## Functional requirements
+
+A user can search for a game title
+A user can select from a list of popular game titles
+A user can view their selection on a second page
+A user can view the steam rating and deals on the second page
+The users selection will be saved into a database
+
+## Non-Functional requirements
+
+1. Usability: We will utilize unmoderated remote usability testing to conscript the community to assist in ensuring a user-friendly and bug-minimal application
+2. Testability: We will design our own product testing to ensure that our application is functional and provides the friendly experience we want our users to have. We will do this by manually going through our page to test out our site and creating a list of items we want to improve upon.
+
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
-1. 
+1. Go to the applications website
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
