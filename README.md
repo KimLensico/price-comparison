@@ -6,6 +6,30 @@
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code 301 class. (i.e. What's your problem domain?) -->
 
+## User Stories
+
+1. User: As a user I want to be able to select a popular game title and compare prices to find the best deal
+2. User: As a user I would like to be able to search for a popular title from a list and compare prices to find the best deal
+3. server: As the website creator I would like users to be able to search for a game, save the results in a database, retrieve that result from the database, and have those deals show up on a second page.
+4. server: as the website creator I would like users to be able to pick from a selection of popular titles, retrieve that information from a database, and display the deals on a second page.
+5. retailer: as a video game retailer I would like my businesses data to display when my marketplace has the best deal
+
+## Software Requirements
+
+The vision of this product is to allow users to be able to find the best deals on video game titles
+This application solves the problem of users being able to find the best deals on video game titles they are interested in
+This product should be cared about because it is intended to save you money as a potential user
+
+This product will display a list of popular titles on the homepage
+This product will allow you to select from the list of popular titles to find the best deals on that title
+This product will display your selection on a second page along with the deals associated with the selected title
+This product will display your selections Steam rating and deal rating(s)
+
+The MVP for our application is to display a list of popular titles and a search bar on our homepage
+to save user selections into a database
+to retrieve database data and display relevent results on a second page
+to help users find the best deal!
+Stretch goals: being able to look up multiple games at a time and display their results concurrently
 
 
 ## Getting Started
