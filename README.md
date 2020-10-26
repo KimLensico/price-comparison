@@ -49,6 +49,14 @@ The users selection will be saved into a database
 2. Testability: We will design our own product testing to ensure that our application is functional and provides the friendly experience we want our users to have. We will do this by manually going through our page to test out our site and creating a list of items we want to improve upon.
 
 
+## Models
+### Domain Model
+![Domain Model](./assets/domain-model.jpg)
+
+### Database ERD
+![Database ERD](./assets/db-erd.jpeg)
+
+
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
