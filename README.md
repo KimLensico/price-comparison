@@ -1,6 +1,6 @@
-# Price Comparison 
+# Price Comparison
 
-**Author**: Aysia, Kimberly, Garrett & Ryan 
+**Author**: Aysia, Kimberly, Garrett & Ryan
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
@@ -48,14 +48,15 @@ The users selection will be saved into a database
 1. Usability: We will utilize unmoderated remote usability testing to conscript the community to assist in ensuring a user-friendly and bug-minimal application
 2. Testability: We will design our own product testing to ensure that our application is functional and provides the friendly experience we want our users to have. We will do this by manually going through our page to test out our site and creating a list of items we want to improve upon.
 
-
 ## Models
+
 ### Domain Model
+
 ![Domain Model](./assets/domain-model.jpg)
 
 ### Database ERD
-![Database ERD](./assets/db-erd.jpeg)
 
+![Database ERD](./assets/db-erd.jpeg)
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
@@ -65,9 +66,10 @@ The users selection will be saved into a database
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
-The following languages are used in our app: HTML, CSS, JavScript. The library used for the app is jQuery. 
+The following languages are used in our app: HTML, CSS, JavScript. The library used for the app is jQuery.
 
 ## Change Log
+
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with GET and POST routes for the book resource.
@@ -75,6 +77,6 @@ The following languages are used in our app: HTML, CSS, JavScript. The library u
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
---> 10.23.2020 Price Comparison Repo has been initiated. 
+--> 10.23.2020 Price Comparison Repo has been initiated.
 
 ---
