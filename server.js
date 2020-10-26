@@ -44,7 +44,7 @@ function renderHomepage(req, res) {
   res.render('homepage-view');
 }
 
-function RenderListOfGamesonHomepage(req, res) {
+function renderListOfGamesonHomepage(req, res) {
   let url = `https://www.cheapshark.com/api/1.0/deals`;
   superagent.get(url)
     .then(data => {
@@ -56,6 +56,11 @@ function RenderListOfGamesonHomepage(req, res) {
       console.error(err);
       res.render('error-view', { error: err });
     });
+}
+app.get('/results', renderResultsView)
+
+function renderResultsView(req, res) {
+  res.render('results-view')
 }
 
 function Games(gamesData) {

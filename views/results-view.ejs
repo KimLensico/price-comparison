@@ -2,10 +2,14 @@
 <html>
 
     <head>
-
+      <%- include('./layout/head') %>
     </head>
 
     <body>
+      <header>
+        <%- include('./layout/header') %>
+      </header>
+      proof of life
         <main>
             <% gamesArray.forEach(games => { %>
                 <h2><%= games.title %></h2>
