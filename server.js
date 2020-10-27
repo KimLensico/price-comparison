@@ -36,8 +36,8 @@ const testAPI = (req, res) => {
 app.get('/test', testAPI);
 // TESTING END
 
-app.get('/results', (req,res) => {
-  RenderListOfGamesonHomepage(req,res)
+app.get('/results', (req, res) => {
+  renderListOfGamesonHomepage(req, res)
 });
 
 function renderHomepage(req, res) {
@@ -50,7 +50,7 @@ function renderListOfGamesonHomepage(req, res) {
     .then(data => {
       let gamesToBeRendered = data.body;
       let makingAList = gamesToBeRendered.map((game) => (new Games(game)));
-      res.render('results-view', { gamesArray : makingAList })
+      res.render('results-view', { gamesArray: makingAList })
     })
     .catch(err => {
       console.error(err);

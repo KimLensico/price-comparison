@@ -1,3 +1,13 @@
 body {
   background-color: grey;
 }
+
+.gameContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.gamesDisplayed {
+  display: flex;
+  flex-flow: column;
+}
