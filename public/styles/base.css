@@ -1,3 +1,20 @@
 body {
-  background-color: grey;
+  background-color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+header {
+  color: #fff;
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
+}
+
+h1 {
+  font-family: 'Viga';
+}
+
+p {
+  font-size: 12px;
 }

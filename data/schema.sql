@@ -13,7 +13,7 @@ CREATE TABLE games (
   thumbnail VARCHAR(255),
   game_rating INTEGER,
   deal_rating VARCHAR(255),
-  store_id INTEGER REFERENCES stores(id),
+  store_id INTEGER,
   normal_price VARCHAR(255),
   sale_price VARCHAR(255)
 );
