@@ -30,7 +30,6 @@ client.on('error', err => console.log(err));
 
 // to make sure server is listening
 
-
 // TESTING BEGIN: to make sure we can grab API data
 const testAPI = (req, res) => {
   let url = `https://www.cheapshark.com/api/1.0/deals?title=grand-theft-auto-v`;
@@ -41,15 +40,15 @@ app.get('/test', testAPI);
 // TESTING END
 
 //proof of life for homepage
-app.get('/', renderHomepage)
+// app.get('/', renderHomepage)
 
-app.get('/results', (req, res) => {
+app.post('/results', (req, res) => {
   renderListOfGamesonResultsPage(req, res)
 });
 
-function renderHomepage(req, res) {
-  res.render('homepage-view');
-}
+// function renderHomepage(req, res) {
+//   res.render('homepage-view');
+// }
 //proof of life for homepage END
 
 //proof of life for results page
@@ -67,9 +66,10 @@ app.get('/results', (req, res) => {
 });
 
 app.post('/add-game', resultsPageFormDataHandler)
-// app.get('/', (req, res) => {
-//   retrieveFormData(req, res)
-// });
+
+app.get('/', (req, res) => {
+  retrieveFormData(req, res)
+});
 
 
 function resultsPageFormDataHandler(req, res) {
@@ -77,41 +77,35 @@ function resultsPageFormDataHandler(req, res) {
   let sql = 'INSERT INTO games (title, thumbnail, game_rating, deal_rating, store_id, normal_price, sale_price) VALUES ($1, $2, $3, $4, $5, $6, $7);';
   //controller / destructuring
   let sqlArr = [title, thumbnail, steamRating, dealRating, storeID, normalPrice, salePrice]
-  console.log(sqlArr)
-  console.log(client.query)
+  // console.log(sqlArr)
+  // console.log(client.query)
   client.query(sql, sqlArr)//this asks the sql client for the information
     .then(item => {
-      console.log(item)
       res.redirect(`/`)
     })
     .catch(err => console.error(err));
   //request asks postgres
 }
 function retrieveFormData(req, res) {
-  let SQL = 'SELECT * FROM games WHERE id=$1';
-  let values = [req.params.id];
-  console.log(client.query);
-  return client.query(SQL, values)
+  let SQL = 'SELECT * FROM games;';
+  // console.log(client.query);
+  return client.query(SQL)
     .then(data => {
-      console.log(data.rows[0])
-      res.render('homepage-view', { gamesArray: data.rows[0] }) //sending back single game
+      console.log(data)
+      res.render('homepage-view', { gamesArray: data.rows }) //sending back single game
     })
     .catch(err => console.error(err));
 }
 
 
 function renderListOfGamesonResultsPage(req, res) {
-  let query = `?title=${req.body}`;
-  console.log(req.body);
-
-  let query = `?title=${req.body}`;
-  let url = `https://www.cheapshark.com/api/1.0/deals${query}`;
-  
+  const {query} = req.body;
+  // console.log(query);
+  let url = `https://www.cheapshark.com/api/1.0/deals?title=${query}`;
   superagent.get(url)
     .then(data => {
       let gamesToBeRendered = data.body;
       let makingAList = gamesToBeRendered.map((game) => (new Games(game)));
-
       res.render('results-view', { gamesArray: makingAList })
     })
     .catch(err => {

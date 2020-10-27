@@ -19,9 +19,9 @@
         <p>STEAM: <%= games.steamRating %><br />
           RATING: <%= games.dealRating %><br />
           STORE: <%= games.storeID %></p>
-        <form action="/" method="post">
+        <form action="/add-game" method="post">
           <input type="hidden" name="title" value="<%=games.title %>">
-          <input type="hidden" name="img" value="<%=games.thumbnail %>">
+          <input type="hidden" name="thumbnail" value="<%=games.thumbnail %>">
           <input type="hidden" name="steamRating" value="<%=games.steamRating %>">
           <input type="hidden" name="dealRating" value="<%=games.dealRating %>">
           <input type="hidden" name="storeID" value="<%=games.storeID %>">
