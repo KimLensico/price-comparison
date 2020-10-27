@@ -6,7 +6,7 @@ CREATE TABLE games (
   title VARCHAR(255),
   thumbnail VARCHAR(255),
   game_rating INTEGER,
-  deal_rating NUMERIC(3,2),
+  deal_rating DECIMAL(3,2),
   store_id INTEGER,
   normal_price VARCHAR(255),
   sale_price VARCHAR(255)
@@ -16,4 +16,4 @@ CREATE TABLE popular_titles (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   thumbnail VARCHAR(255)
-)
+);

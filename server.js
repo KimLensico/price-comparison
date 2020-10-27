@@ -58,7 +58,9 @@ function resultsPageFormDataHandler(req, res) {
 }
 
 function renderListOfGamesonResultsPage(req, res) {
-  let url = `https://www.cheapshark.com/api/1.0/deals`;
+  console.log(req.body);
+  let query =`?title=${req.body}`;
+  let url = `https://www.cheapshark.com/api/1.0/deals${query}`;
   superagent.get(url)
     .then(data => {
       let gamesToBeRendered = data.body;
