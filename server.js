@@ -28,7 +28,7 @@ app.listen(PORT, () => {
 
 // TESTING BEGIN: to make sure we can grab API data
 const testAPI = (req, res) => {
-  let url = `https://www.cheapshark.com/api/1.0/deals`;
+  let url = `https://www.cheapshark.com/api/1.0/deals?title=grand-theft-auto-v`;
   superagent.get(url)
     .then(data => res.send(JSON.parse(data.text)))
 }
@@ -36,15 +36,22 @@ const testAPI = (req, res) => {
 app.get('/test', testAPI);
 // TESTING END
 
+<<<<<<< HEAD
 app.get('/results', (req, res) => {
   renderListOfGamesonHomepage(req, res)
+=======
+app.get('/', renderHomepage)
+
+app.get('/results', (req,res) => {
+  renderListOfGamesonResultsPage(req,res)
+>>>>>>> af2b41df250d97bb2d7738f1604ccc0e62dd58cf
 });
 
 function renderHomepage(req, res) {
   res.render('homepage-view');
 }
 
-function renderListOfGamesonHomepage(req, res) {
+function renderListOfGamesonResultsPage(req, res) {
   let url = `https://www.cheapshark.com/api/1.0/deals`;
   superagent.get(url)
     .then(data => {
