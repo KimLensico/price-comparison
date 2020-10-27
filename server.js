@@ -27,18 +27,22 @@ app.listen(PORT, () => {
 })
 
 // TESTING BEGIN: to make sure we can grab API data
-const testAPI = (req, res) => {
-  let url = `https://www.cheapshark.com/api/1.0/deals?title=grand-theft-auto-v`;
-  superagent.get(url)
-    .then(data => res.send(JSON.parse(data.text)))
-}
-
-app.get('/test', testAPI);
+// const testAPI = (req, res) => {
+//   const {query} = req.body;
+//   let url = `https://www.cheapshark.com/api/1.0/deals?title=${query}`
+//   superagent.get(url)
+//     .then(data=> {
+//       let rawData = JSON.parse(data.text);
+//       let listOfDeals = rawData.map(game => new Games(game));
+//       res.render('results-view', {gamesArray: listOfDeals});
+//     })
+// }
+// app.post('/results', testAPI);
 // TESTING END
 
 app.get('/', renderHomepage)
 
-app.get('/results', (req,res) => {
+app.post('/results', (req,res) => {
   renderListOfGamesonResultsPage(req,res)
 });
 
@@ -47,9 +51,9 @@ function renderHomepage(req, res) {
 }
 
 function renderListOfGamesonResultsPage(req, res) {
-  console.log(req.body);
-  let query =`?title=${req.body}`;
-  let url = `https://www.cheapshark.com/api/1.0/deals${query}`;
+  const {query} = req.body; // gets query from search bar
+  let url = `https://www.cheapshark.com/api/1.0/deals?title=${query}`; // appends serach query to url
+  getStoreNameFromID();
   superagent.get(url)
     .then(data => {
       let gamesToBeRendered = data.body;
@@ -61,6 +65,23 @@ function renderListOfGamesonResultsPage(req, res) {
       res.render('error-view', { error: err });
     });
 }
+
+function getStoreNameFromID() {
+  let url = `https://www.cheapshark.com/api/1.0/stores`;
+  superagent.get(url)
+    .then(data => {
+      let rawData = JSON.parse(data.text);
+      let sql = `INSERT INTO stores (store_name) VALUES ($1)`;
+      rawData.forEach(store => {
+        client.query(sql,[store.storeName])
+          .then(() => {})
+      })
+    })
+}
+
+app.get('/test', getStoreNameFromID);
+
+
 app.get('/results', renderResultsView)
 
 function renderResultsView(req, res) {
