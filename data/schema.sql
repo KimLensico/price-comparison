@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS games;
 
-CREATE TABLE books (
+CREATE TABLE games(
   id SERIAL PRIMARY KEY,
   
 );
