@@ -43,6 +43,10 @@ app.get('/test', testAPI);
 //proof of life for homepage
 app.get('/', renderHomepage)
 
+app.get('/results', (req, res) => {
+  renderListOfGamesonResultsPage(req, res)
+});
+
 function renderHomepage(req, res) {
   res.render('homepage-view');
 }
@@ -99,13 +103,15 @@ function retrieveFormData(req, res) {
 function renderListOfGamesonResultsPage(req, res) {
   let query = `?title=${req.body}`;
   console.log(req.body);
-  let url2 = `https://www.cheapshark.com/api/1.0/deals${query}`;
-  let url = `https://www.cheapshark.com/api/1.0/deals`;
+
+  let query = `?title=${req.body}`;
+  let url = `https://www.cheapshark.com/api/1.0/deals${query}`;
+  
   superagent.get(url)
     .then(data => {
       let gamesToBeRendered = data.body;
       let makingAList = gamesToBeRendered.map((game) => (new Games(game)));
-      console.log(makingAList);
+
       res.render('results-view', { gamesArray: makingAList })
     })
     .catch(err => {
