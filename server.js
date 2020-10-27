@@ -36,15 +36,17 @@ const testAPI = (req, res) => {
 app.get('/test', testAPI);
 // TESTING END
 
+app.get('/', renderHomepage)
+
 app.get('/results', (req,res) => {
-  RenderListOfGamesonHomepage(req,res)
+  renderListOfGamesonResultsPage(req,res)
 });
 
 function renderHomepage(req, res) {
   res.render('homepage-view');
 }
 
-function renderListOfGamesonHomepage(req, res) {
+function renderListOfGamesonResultsPage(req, res) {
   let url = `https://www.cheapshark.com/api/1.0/deals`;
   superagent.get(url)
     .then(data => {
