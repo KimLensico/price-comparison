@@ -12,7 +12,10 @@
     <%- include('./layout/header') %>
   </header>
   <main>
-
+    <form action="/results" method="post">
+      <input type="text" name="query" value="search for titles">
+      <button type="submit">Search!</button>
+    </form>
   </main>
   <footer><%- include('./layout/footer') %></footer>
 </body>
