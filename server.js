@@ -63,6 +63,7 @@ function renderListOfGamesonResultsPage(req, res) {
     .then(data => {
       let gamesToBeRendered = data.body;
       let makingAList = gamesToBeRendered.map((game) => (new Games(game)));
+      console.log(makingAList);
       res.render('results-view', { gamesArray : makingAList })
     })
     .catch(err => {
@@ -82,6 +83,8 @@ function Games(gamesData) {
   this.steamRating = gamesData.steamRatingPercent;
   this.dealRating = gamesData.dealRating;
   this.storeID = gamesData.storeID;
+  this.salePrice = gamesData.salePrice;
+  this.normalPrice = gamesData.normalPrice;
   gamesArray.push(gamesData);
 }
 
