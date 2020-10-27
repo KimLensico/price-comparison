@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS games;
 
-CREATE TABLE games (
+CREATE TABLE games(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   thumbnail VARCHAR(255),
