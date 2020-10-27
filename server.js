@@ -41,9 +41,20 @@ app.get('/', renderHomepage)
 app.get('/results', (req,res) => {
   renderListOfGamesonResultsPage(req,res)
 });
-
+app.post('/', resultsPageFormDataHandler)
 function renderHomepage(req, res) {
   res.render('homepage-view');
+}
+
+function resultsPageFormDataHandler(req, res) {
+  const { title, thumbnail, steamRating, dealRating, storeID } = req.body
+  let sql = 'INSERT INTO games (title, thumbnail, steamRating, dealRating, storeID) VALUES ($1, $2, $3, $4, $5) RETURNING id;'
+  //controller / destructuring
+  let sqlArr = [ title, thumbnail, steamRating, dealRating, storeID ];
+
+  client.query(sql, sqlArr)//this asks the sql client for the information
+  console.log(client.query, sql, sqlArr[1]);
+  //request asks postgres
 }
 
 function renderListOfGamesonResultsPage(req, res) {
