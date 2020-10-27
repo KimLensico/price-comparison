@@ -5,12 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <%- include('./layout/head') %>
 </head>
 <body>
-  <header></header>
+  <header>
+    <%- include('./layout/header') %>
+  </header>
   <main>
-
+    <form action="/results" method="post">
+      <input type="text" name="query" value="search for titles">
+      <button type="submit">Search!</button>
+    </form>
   </main>
-  <footer></footer>
+  <footer><%- include('./layout/footer') %></footer>
 </body>
 </html>

@@ -1,29 +1,36 @@
 <!DOCTYPE HTML>
 <html>
 
-    <head>
+<head>
+  <%- include('./layout/head') %>
+</head>
 
-    </head>
-
-    <body>
-        <main>
-            <% gamesArray.forEach(games => { %>
-                <h2><%= games.title %></h2>
-                <img id="gamePicture" src="<%= games.thumbnail %>" >
-                <h2><%= games.steamRating %></h2>
-                <h2><%= games.dealRating %></h2>
-                <h2><%= games.storeID %></h2>
-                <form action="/" method="post">
-                <input type="hidden" name="title" value="<%=games.title %>">
-                <input type="hidden" name="img" value="<%=games.thumbnail %>">                
-                <input type="hidden" name="steamRating" value="<%=games.steamRating %>">
-                <input type="hidden" name="dealRating" value="<%=games.dealRating %>">
-                <input type="hidden" name="storeID" value="<%=games.storeID %>">
-                <button>Add to Favorites</button>
-            </form>
-                <% }) %>
-        </main>
-
-    </body>
+<body>
+  <header>
+    <%- include('./layout/header') %>
+  </header>
+  proof of life
+  <main>
+    <div class="gameContainer">
+      <% gamesArray.forEach(games => { %>
+      <div class="gameBox">
+        <h2><%= games.title %></h2>
+        <img id="gamePicture" src="<%= games.thumbnail %>">
+        <p>STEAM: <%= games.steamRating %><br />
+          RATING: <%= games.dealRating %><br />
+          STORE: <%= games.storeID %></p>
+        <form action="/" method="post">
+          <input type="hidden" name="title" value="<%=games.title %>">
+          <input type="hidden" name="img" value="<%=games.thumbnail %>">
+          <input type="hidden" name="steamRating" value="<%=games.steamRating %>">
+          <input type="hidden" name="dealRating" value="<%=games.dealRating %>">
+          <input type="hidden" name="storeID" value="<%=games.storeID %>">
+          <button>Add to Favorites</button>
+        </form>
+      </div>
+      <% }) %>
+    </div>
+  </main>
+</body>
 
 </html>
