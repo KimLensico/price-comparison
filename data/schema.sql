@@ -2,11 +2,6 @@ DROP TABLE IF EXISTS games;
 DROP TABLE IF EXISTS popular_titles;
 DROP TABLE IF EXISTS stores;
 
-CREATE TABLE stores (
-  id SERIAL PRIMARY KEY,
-  store_name VARCHAR(255)
-);
-
 CREATE TABLE games (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),

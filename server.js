@@ -30,21 +30,6 @@ client.on('error', err => console.log(err));
 
 // to make sure server is listening
 
-// TESTING BEGIN: to make sure we can grab API data
-// const testAPI = (req, res) => {
-//   const {query} = req.body;
-//   let url = `https://www.cheapshark.com/api/1.0/deals?title=${query}`
-//   superagent.get(url)
-//     .then(data=> {
-//       let rawData = JSON.parse(data.text);
-//       let listOfDeals = rawData.map(game => new Games(game));
-//       res.render('results-view', {gamesArray: listOfDeals});
-//     })
-// }
-// app.post('/results', testAPI);
-// TESTING END
-
-
 app.post('/results', (req, res) => {
   renderListOfGamesonResultsPage(req, res)
 });

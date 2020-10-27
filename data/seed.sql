@@ -38,21 +38,3 @@ INSERT INTO popular_titles (
     'Grand Theft Auto V',
 'https://cdn.cloudflare.steamstatic.com/steam/apps/271590/capsule_sm_120.jpg?t=1592866696'
 );
-
-INSERT INTO games (
-    title,
-    thumbnail,
-    game_rating,
-    deal_rating,
-    store_id,
-    normal_price,
-    sale_price
-) VALUES (
-    'Test',
-    'Thumb',
-    90,
-    87,
-    4,
-    '11.99',
-    '5.99'
-);
