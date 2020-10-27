@@ -13,12 +13,12 @@
   <main>
     <div class="gameContainer">
       <% gamesArray.forEach(games => { %>
-      <div class="displayedGames">
+      <div class="gameBox">
         <h2><%= games.title %></h2>
         <img id="gamePicture" src="<%= games.thumbnail %>">
-        <h2><%= games.steamRating %></h2>
-        <h2><%= games.dealRating %></h2>
-        <h2><%= games.storeID %></h2>
+        <p>STEAM: <%= games.steamRating %><br />
+          RATING: <%= games.dealRating %><br />
+          STORE: <%= games.storeID %></p>
         <form action="/" method="post">
           <input type="hidden" name="title" value="<%=games.title %>">
           <input type="hidden" name="img" value="<%=games.thumbnail %>">
