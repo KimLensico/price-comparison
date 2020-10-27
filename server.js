@@ -28,7 +28,7 @@ app.listen(PORT, () => {
 
 // TESTING BEGIN: to make sure we can grab API data
 const testAPI = (req, res) => {
-  let url = `https://www.cheapshark.com/api/1.0/deals`;
+  let url = `https://www.cheapshark.com/api/1.0/deals?title=grand-theft-auto-v`;
   superagent.get(url)
     .then(data => res.send(JSON.parse(data.text)))
 }
