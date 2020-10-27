@@ -6,7 +6,7 @@ CREATE TABLE games (
   title VARCHAR(255),
   thumbnail VARCHAR(255),
   game_rating INTEGER,
-  deal_rating DECIMAL(3,2),
+  deal_rating VARCHAR(255),
   store_id INTEGER,
   normal_price VARCHAR(255),
   sale_price VARCHAR(255)

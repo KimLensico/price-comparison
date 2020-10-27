@@ -14,15 +14,17 @@
     <% gamesArray.forEach(games => { %>
     <h2><%= games.title %></h2>
     <img id="gamePicture" src="<%= games.thumbnail %>">
-    <h2><%= games.steamRating %></h2>
-    <h2><%= games.dealRating %></h2>
-    <h2><%= games.storeID %></h2>
-    <form action="/" method="post">
+    <h2>steam rating <%= games.steamRating %></h2>
+    <h2>deal rating <%= games.dealRating %></h2>
+    <h2>store id <%= games.storeID %></h2>
+    <form action="/add-game" method="post">
       <input type="hidden" name="title" value="<%=games.title %>">
-      <input type="hidden" name="img" value="<%=games.thumbnail %>">
+      <input type="hidden" name="thumbnail" value="<%=games.thumbnail %>">
       <input type="hidden" name="steamRating" value="<%=games.steamRating %>">
       <input type="hidden" name="dealRating" value="<%=games.dealRating %>">
       <input type="hidden" name="storeID" value="<%=games.storeID %>">
+      <input type="hidden" name="normalPrice" value="<%=games.normalPrice %>">
+      <input type="hidden" name="salePrice" value="<%=games.salePrice %>">
       <button>Add to Favorites</button>
     </form>
     <% }) %>
