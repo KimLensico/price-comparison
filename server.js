@@ -38,8 +38,8 @@ app.get('/test', testAPI);
 
 app.get('/', renderHomepage)
 
-app.get('/results', (req,res) => {
-  renderListOfGamesonResultsPage(req,res)
+app.get('/results', (req, res) => {
+  renderListOfGamesonResultsPage(req, res)
 });
 
 function renderHomepage(req, res) {
@@ -48,13 +48,13 @@ function renderHomepage(req, res) {
 
 function renderListOfGamesonResultsPage(req, res) {
   console.log(req.body);
-  let query =`?title=${req.body}`;
+  let query = `?title=${req.body}`;
   let url = `https://www.cheapshark.com/api/1.0/deals${query}`;
   superagent.get(url)
     .then(data => {
       let gamesToBeRendered = data.body;
       let makingAList = gamesToBeRendered.map((game) => (new Games(game)));
-      res.render('results-view', { gamesArray : makingAList })
+      res.render('results-view', { gamesArray: makingAList })
     })
     .catch(err => {
       console.error(err);
