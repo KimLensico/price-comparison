@@ -101,12 +101,11 @@ function retrieveFormData(req, res) {
 
 
 function renderListOfGamesonResultsPage(req, res) {
-  let query = `?title=${req.body}`;
+  let { query } = req.body;
   console.log(req.body);
 
-  let query = `?title=${req.body}`;
   let url = `https://www.cheapshark.com/api/1.0/deals${query}`;
-  
+
   superagent.get(url)
     .then(data => {
       let gamesToBeRendered = data.body;
