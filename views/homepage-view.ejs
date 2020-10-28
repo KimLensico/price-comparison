@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>homepage</title>
   <%- include('./layout/head') %>
 </head>
 <body>
@@ -12,8 +12,27 @@
     <%- include('./layout/header') %>
   </header>
   <main>
-
+    <form action="/results" method="post">
+      <input type="text" name="query" value="search for titles">
+      <button type="submit">Search!</button>
+    </form>
+    <% obj.popularArray.forEach(item => { %>
+    <form action='/results' method='post'>
+        <h2><%= item.title %></h2>
+        <!-- <img id="gamePicture" src="<%= item.thumbnail %>"> -->
+        <input type="hidden" name="query" value="<%= item.title%>">
+        <input type="image" src="<%= item.thumbnail%>"/>
+    </form>
+    <% }) %>
+        
+    <% obj.gamesArray.forEach(games => { %>
+      <h2><%= games.title %></h2>
+      <img id="gamePicture" src="<%= games.thumbnail %>">
+        <p>STEAM: <%= games.game_rating %><br />
+          RATING: <%= games.deal_rating %><br />
+          STORE: <%= games.store_id %></p>
+    <% }) %>
   </main>
-  <footer></footer>
+  <footer><%- include('./layout/footer') %></footer>
 </body>
 </html>
