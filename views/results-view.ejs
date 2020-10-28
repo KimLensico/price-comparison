@@ -9,7 +9,7 @@
   <header>
     <%- include('./layout/header') %>
   </header>
-  proof of life
+
   <main>
     <div class="gameContainer">
       <% gamesArray.forEach(games => { %>
@@ -18,7 +18,9 @@
         <img id="gamePicture" src="<%= games.thumbnail %>">
         <p>STEAM: <%= games.steamRating %><br />
           RATING: <%= games.dealRating %><br />
-          STORE: <%= games.storeID %></p>
+          STORE: <%= games.storeID %><br />
+          NORMAL PRICE <%= games.normalPrice %><br />
+          SALE PRICE <%= games.salePrice %></p>
         <form action="/add-game" method="post">
           <input type="hidden" name="title" value="<%=games.title %>">
           <input type="hidden" name="thumbnail" value="<%=games.thumbnail %>">
