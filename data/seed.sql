@@ -2,7 +2,7 @@ INSERT INTO popular_titles (
     title,
     thumbnail
 ) VALUES (
-    'Read Dead Redemption 2',
+    'Red Dead Redemption 2',
     'https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/capsule_sm_120.jpg?t=1597419522'
 );
 
