@@ -28,18 +28,6 @@ client.connect()//makes sure express connects to the database and then connects 
   })
 client.on('error', err => console.log(err));
 
-// to make sure server is listening
-
-// TESTING BEGIN: to make sure we can grab API data
-const testAPI = (req, res) => {
-  let url = `https://www.cheapshark.com/api/1.0/deals?title=grand-theft-auto-v`;
-  superagent.get(url)
-    .then(data => res.send(JSON.parse(data.text)))
-}
-app.get('/test', testAPI);
-// TESTING END
-
-
 app.post('/results', (req, res) => {
   renderListOfGamesonResultsPage(req, res)
 });
@@ -84,7 +72,9 @@ function retrievePopularData(req, res) {
 
 function renderListOfGamesonResultsPage(req, res) {
   const { query } = req.body;
+  console.log(query);
   let url = `https://www.cheapshark.com/api/1.0/deals?title=${query}`;
+  console.log(url);
   superagent.get(url)
     .then(data => {
       let gamesToBeRendered = data.body;
@@ -96,6 +86,9 @@ function renderListOfGamesonResultsPage(req, res) {
       res.render('error-view', { error: err });
     });
 }
+
+
+
 
 function Games(gamesData) {
   this.title = gamesData.title;
