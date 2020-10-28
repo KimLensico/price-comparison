@@ -18,7 +18,7 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
 
 // connecting database
-console.log(process.env.DATABASE_URL);
+
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect()//makes sure express connects to the database and then connects to the port so that express doesnt start collecting requests before it connects to the database
   .then(() => {
@@ -30,7 +30,6 @@ client.on('error', err => console.log(err));
 
 // to make sure server is listening
 
-
 // TESTING BEGIN: to make sure we can grab API data
 const testAPI = (req, res) => {
   let url = `https://www.cheapshark.com/api/1.0/deals?title=grand-theft-auto-v`;
@@ -40,26 +39,10 @@ const testAPI = (req, res) => {
 app.get('/test', testAPI);
 // TESTING END
 
-//proof of life for homepage
-app.get('/', renderHomepage)
 
-app.get('/results', (req, res) => {
+app.post('/results', (req, res) => {
   renderListOfGamesonResultsPage(req, res)
 });
-
-function renderHomepage(req, res) {
-  res.render('homepage-view');
-}
-//proof of life for homepage END
-
-//proof of life for results page
-// app.get('/results', renderResultsView)
-
-// function renderResultsView(req, res) {
-//   res.render('results-view')
-// }
-//proof of life for results page END
-
 
 //rendering gamesList on homepage
 app.get('/results', (req, res) => {
@@ -67,50 +50,45 @@ app.get('/results', (req, res) => {
 });
 
 app.post('/add-game', resultsPageFormDataHandler)
-// app.get('/', (req, res) => {
-//   retrieveFormData(req, res)
-// });
 
+app.get('/', retrievePopularData);
 
 function resultsPageFormDataHandler(req, res) {
   const { title, thumbnail, steamRating, dealRating, storeID, normalPrice, salePrice } = req.body
   let sql = 'INSERT INTO games (title, thumbnail, game_rating, deal_rating, store_id, normal_price, sale_price) VALUES ($1, $2, $3, $4, $5, $6, $7);';
   //controller / destructuring
   let sqlArr = [title, thumbnail, steamRating, dealRating, storeID, normalPrice, salePrice]
-  console.log(sqlArr)
-  console.log(client.query)
   client.query(sql, sqlArr)//this asks the sql client for the information
     .then(item => {
-      console.log(item)
       res.redirect(`/`)
     })
     .catch(err => console.error(err));
   //request asks postgres
 }
-function retrieveFormData(req, res) {
-  let SQL = 'SELECT * FROM games WHERE id=$1';
-  let values = [req.params.id];
-  console.log(client.query);
-  return client.query(SQL, values)
+
+function retrievePopularData(req, res) {
+  let SQL = 'SELECT * FROM popular_titles;';
+  let obj = {}
+  client.query(SQL)
     .then(data => {
-      console.log(data.rows[0])
-      res.render('homepage-view', { gamesArray: data.rows[0] }) //sending back single game
+      obj.popularArray = data.rows;
+      SQL = 'SELECT * FROM games;';
+      client.query(SQL)
+        .then(data => {
+          obj.gamesArray = data.rows
+          res.render('homepage-view', { obj: obj })
+        })
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error(err))
 }
 
-
 function renderListOfGamesonResultsPage(req, res) {
-  let { query } = req.body;
-  console.log(req.body);
-
-  let url = `https://www.cheapshark.com/api/1.0/deals${query}`;
-
+  const { query } = req.body;
+  let url = `https://www.cheapshark.com/api/1.0/deals?title=${query}`;
   superagent.get(url)
     .then(data => {
       let gamesToBeRendered = data.body;
       let makingAList = gamesToBeRendered.map((game) => (new Games(game)));
-
       res.render('results-view', { gamesArray: makingAList })
     })
     .catch(err => {
@@ -118,7 +96,6 @@ function renderListOfGamesonResultsPage(req, res) {
       res.render('error-view', { error: err });
     });
 }
-
 
 function Games(gamesData) {
   this.title = gamesData.title;
