@@ -13,6 +13,7 @@
     <%- include('./layout/header') %>
   </header>
   <main>
+
     <div id="searchBar">
       <form action="/results" method="post">
         <input type="text" name="query" value="search for titles" size="50">
@@ -40,14 +41,17 @@
     <div class="gameContainer">
       <% obj.gamesArray.forEach(games => { %>
       <div class="gameBox">
+
         <h3><%= games.title %></h3>
         <img id="gamePicture" src="<%= games.thumbnail %>">
         <p>STEAM: <%= games.game_rating %><br />
           RATING: <%= games.deal_rating %><br />
           STORE: <%= games.store_id %></p>
+
       </div>
       <% }) %>
     </div>
+
   </main>
   <footer><%- include('./layout/footer') %></footer>
 </body>
