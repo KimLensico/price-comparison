@@ -1,28 +1,30 @@
 .gameContainer {
   display: flex;
   flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 .gameBox {
   position: relative;
   display: inline-block;
+  overflow: hidden;
   flex-flow: column;
   border: black solid 1px;
   border-radius: 3%;
-  width: 20vw;
-  height: 40vh;
-  padding: 1%;
+  width: 250px;
+  height: 250px;
+  margin: 1%;
+  padding: 0 1% 0;
   background-color: auto;
   transition: all 0.3s ease-in-out;
+  overflow-y: auto;
 }
 
 .gameBox::after {
   content: '';
   position: absolute;
   z-index: -1;
-  width: 20vw;
-  height: 40vh;
   padding: 1%;
   opacity: 0;
   border-radius: 5px;
@@ -32,7 +34,7 @@
 
 .gameBox:hover {
   -webkit-transform: scale(1.01, 1.01);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.308); 
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.308); 
 }
 
 .gameBox:hover::after {
@@ -40,11 +42,23 @@
 }
 
 .gameBox > h2 {
-  justify-content: center;
+  justify-self: center;
   font-size: 1vw;
   font-family: Arial;
 }
 
 .gameBox > img  {
   justify-content: center;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #44D878;
+}
+
+.popularGames{
+  overflow: hidden;
+  flex-wrap: nowrap;
+  display: flex;
+  height: auto;
 }

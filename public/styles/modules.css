@@ -1,1 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+
+.gameBox::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 20vw;
+  height: 40vh;
+  padding: 1%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 0 0px 0px rga(0, 0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gameBox:hover {
+  -webkit-transform: scale(1.01, 1.01);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.308); 
+}
+
+.gameBox:hover::after {
+  opacity: 1;
+}
+
+.gameBox > h2 {
+  justify-content: center;
+  font-size: 1vw;
+  font-family: Arial;
+}
+
+.gameBox > img  {
+  justify-content: center;
+}
+
+a:hover {
+  text-decoration: underline;
+}

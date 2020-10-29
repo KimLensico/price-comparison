@@ -14,14 +14,21 @@
     <div class="gameContainer">
       <% gamesArray.forEach(games => { %>
       <div class="gameBox">
-        <h2><%= games.title %></h2>
+        <h3><%= games.title %></h3>
         <img id="gamePicture" src="<%= games.thumbnail %>">
+<<<<<<< HEAD
+        <p>STEAM: <%= games.steamRating %> <br />
+          RATING: <%= games.dealRating %> <br />
+          STORE: <%= games.storeID %> </p>
+        <form action="/" method="post">
+=======
         <p>STEAM: <%= games.steamRating %><br />
           RATING: <%= games.dealRating %><br />
           STORE: <%= games.storeID %><br />
           NORMAL PRICE <%= games.normalPrice %><br />
           SALE PRICE <%= games.salePrice %></p>
         <form action="/add-game" method="post">
+>>>>>>> 455497e6d97ddd0f85a2f86e958a17bf63fc74c7
           <input type="hidden" name="title" value="<%=games.title %>">
           <input type="hidden" name="thumbnail" value="<%=games.thumbnail %>">
           <input type="hidden" name="steamRating" value="<%=games.steamRating %>">
