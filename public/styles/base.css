@@ -40,6 +40,7 @@ p {
   font-size: 12px;
 }
 
+<<<<<<< HEAD
 img {
   width: 50%;
   height: auto;
@@ -54,4 +55,14 @@ footer {
   width: 100%;
   margin: 0%;
   text-align: center;
+=======
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+form {
+  justify-self: center;
+  width: 25vw;
+>>>>>>> 25428591da07bffc60614767affe5ff6145c474c
 }
