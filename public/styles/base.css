@@ -9,12 +9,49 @@ header {
   background-color: #000;
   margin: 0;
   overflow: hidden;
+  top: 0;
+  width:100%;
+  position: fixed;
+  z-index: 99;
+}
+
+nav {
+  float: left;
+  display: block;
+  padding: 0 1% 1%;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+main {
+  margin-top: 10%;
+  padding: 0 1vw 0;
 }
 
 h1 {
   font-family: 'Viga';
+  padding: 0 1% 0;
 }
 
 p {
   font-size: 12px;
+}
+
+img {
+  width: 50%;
+  height: auto;
+}
+
+button {
+  background: #44D878;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  margin: 0%;
+  text-align: center;
 }
