@@ -16,22 +16,30 @@
       <input type="text" name="query" value="search for titles">
       <button type="submit">Search!</button>
     </form>
-    <% obj.popularArray.forEach(item => { %>
-    <form action='/results' method='post'>
-        <h2><%= item.title %></h2>
+    
+    <section id="popular">
+      <h2>Popular Titles:</h2>
+      <% obj.popularArray.forEach(item => { %>
+      <form action='/results' method='post'>
+        <h3><%= item.title %></h3>
         <!-- <img id="gamePicture" src="<%= item.thumbnail %>"> -->
         <input type="hidden" name="query" value="<%= item.title%>">
         <input type="image" src="<%= item.thumbnail%>"/>
-    </form>
-    <% }) %>
-        
-    <% obj.gamesArray.forEach(games => { %>
-      <h2><%= games.title %></h2>
-      <img id="gamePicture" src="<%= games.thumbnail %>">
+      </form>
+      <% }) %>
+    </section>
+    
+    <section id="saved">
+      <h2> Saved Titles & Deals:</h2>
+      <% obj.gamesArray.forEach(games => { %>
+        <h3><%= games.title %></h3>
+        <img id="gamePicture" src="<%= games.thumbnail %>">
         <p>STEAM: <%= games.game_rating %><br />
           RATING: <%= games.deal_rating %><br />
           STORE: <%= games.store_id %></p>
-    <% }) %>
+      <% }) %>
+    </section>
+    
   </main>
   <footer><%- include('./layout/footer') %></footer>
 </body>
